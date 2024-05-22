@@ -7,6 +7,16 @@ const quizData = [
                 'Hypertext Markup Language'],
       answer: 'Hyper Text Markup Language',
     },
+    {
+      question: '2. Which technology is primarily responsible for the styling of web pages?',
+      options: ['HTML', 'JavaSript', 'CSS', 'Python'],
+      answer: 'CSS',
+    },
+    {
+      question: '3. What does CSS stand for?',
+      options: ['Creative Style Sheet', 'Computer Style Sheet', 'Custom Style Sheet', 'Cascading Style Sheet'],
+      answer: 'Cascading Style Sheet',
+    },
   ]
   
    
