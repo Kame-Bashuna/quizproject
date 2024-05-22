@@ -1,0 +1,47 @@
+body{
+    background-color: #c2e9f8;
+}
+
+h1{
+    margin-top: 300px;
+   font-size: 180px;
+   margin-left: 100px;
+   
+}
+p{
+    font-size: 50px;
+    margin-left: 160px;
+
+}
+
+#button{
+   background-color:#3c74a5; 
+   width: 250px;
+   height: 60px;
+   margin-left: 0px;
+   border-radius: 100px;
+   font-size: 25px;
+   margin-top: 900px;
+   margin-right: 100px;
+   text-decoration: none;
+   color: white;
+}
+#landpage{
+  display: flex;
+  justify-content: space-around;
+ 
+}
+#start{
+    margin-top: 0px;
+    gap: 1%;
+}
+#image{
+margin-top: 100px;
+height: 700px;
+width: 950px;
+
+}
+a{
+    text-decoration: none;
+    color: white;
+}
