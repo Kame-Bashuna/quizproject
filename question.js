@@ -48,6 +48,36 @@ const quizData = [
       ],
       answer: 'Handling HTTP requests and serving web pages',
     },
+    {
+      question: '8.Which of the following is the Web Application equivalent to querySelectorAll?',
+      options: [
+        '#',
+        '&',
+        '!',
+        '$'
+      ],
+      answer: '#',
+    },
+    {
+      question: '9.When does javascript code appear in inline within an HTML file',
+      options: [
+        'between or outside the "script" tag',
+        'Between the header tag',
+        'Outside the "script" tag',
+        'Between the "script" tag'
+      ],
+      answer: 'Between the "script" tag',
+    },
+    {
+      question: '10.Which of the following is not a back-end programming language commonly used in web development?',
+      options: [
+        'PHP',
+        'Ruby',
+        'Java',
+        'HTML'
+      ],
+      answer: 'HTML',
+    },
   ]
   
    
