@@ -32,6 +32,22 @@ const quizData = [
       ],
       answer: 'To create a visually appealing user interface',
     },
+
+    {
+      question: '6. Which part of web development is responsible for handling data storage and retrieval?',
+      options: ['Front-end development', 'Back-end development', 'Full-stack development', 'Middleware development'],
+      answer: 'Back-end development',
+    },
+    {
+      question: '7. What is the primary function of a web server in the context of web development?',
+      options: [
+        'Rendering web pages on the clients browser',
+        'Executing JavaScript code',
+        'Storing user data',
+        'Handling HTTP requests and serving web pages',
+      ],
+      answer: 'Handling HTTP requests and serving web pages',
+    },
   ]
   
    
