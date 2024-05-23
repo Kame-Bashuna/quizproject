@@ -17,6 +17,21 @@ const quizData = [
       options: ['Creative Style Sheet', 'Computer Style Sheet', 'Custom Style Sheet', 'Cascading Style Sheet'],
       answer: 'Cascading Style Sheet',
     },
+    {
+      question: '4. Which programming language is mainly used for adding interactivity to websites?',
+      options: ['HTML', 'Python', 'JavaScript', 'CSS'],
+      answer: 'JavaScript',
+    },
+    {
+      question: '5. What is the purpose of a front-end web development framework like React or Angular?',
+      options: [
+        'To manage databases and server-side logic',
+        'To create a visually appealing user interface',
+        'To handle serve-side routing',
+        'To interact with web servers',
+      ],
+      answer: 'To create a visually appealing user interface',
+    },
   ]
   
    
