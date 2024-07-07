@@ -1,187 +1,181 @@
-const quizData = [
-    {
-      question: '1. What does HTML stand for?',
-      options: ['Hyper Text Markup Language',
-                'Home Tool Markup Language',
-                'Hyperlinks and Text Markup Language',
-                'Hypertext Markup Language'],
-      answer: 'Hyper Text Markup Language',
-    },
-    {
-      question: '2. Which technology is primarily responsible for the styling of web pages?',
-      options: ['HTML', 'JavaSript', 'CSS', 'Python'],
-      answer: 'CSS',
-    },
-    {
-      question: '3. What does CSS stand for?',
-      options: ['Creative Style Sheet', 'Computer Style Sheet', 'Custom Style Sheet', 'Cascading Style Sheet'],
-      answer: 'Cascading Style Sheet',
-    },
-    {
-      question: '4. Which programming language is mainly used for adding interactivity to websites?',
-      options: ['HTML', 'Python', 'JavaScript', 'CSS'],
-      answer: 'JavaScript',
-    },
-    {
-      question: '5. What is the purpose of a front-end web development framework like React or Angular?',
-      options: [
-        'To manage databases and server-side logic',
-        'To create a visually appealing user interface',
-        'To handle serve-side routing',
-        'To interact with web servers',
-      ],
-      answer: 'To create a visually appealing user interface',
-    },
+// Fetch the quiz data from the JSON file
+fetch('./quiz.json')
+  .then(response => response.json())
+  .then(data => {
+    // Store the quiz data in a global variable
+    window.quizData = data;
+    // Call the function to display the first question
+    displayQuestion();
+  })
+  .catch(error => console.error(error));
 
-    {
-      question: '6. Which part of web development is responsible for handling data storage and retrieval?',
-      options: ['Front-end development', 'Back-end development', 'Full-stack development', 'Middleware development'],
-      answer: 'Back-end development',
-    },
-    {
-      question: '7. What is the primary function of a web server in the context of web development?',
-      options: [
-        'Rendering web pages on the clients browser',
-        'Executing JavaScript code',
-        'Storing user data',
-        'Handling HTTP requests and serving web pages',
-      ],
-      answer: 'Handling HTTP requests and serving web pages',
-    },
-    {
-      question: '8.Which of the following is the Web Application equivalent to querySelectorAll?',
-      options: [
-        '#',
-        '&',
-        '!',
-        '$'
-      ],
-      answer: '#',
-    },
-    {
-      question: '9.When does javascript code appear in inline within an HTML file',
-      options: [
-        'between or outside the "script" tag',
-        'Between the header tag',
-        'Outside the "script" tag',
-        'Between the "script" tag'
-      ],
-      answer: 'Between the "script" tag',
-    },
-    {
-      question: '10.Which of the following is not a back-end programming language commonly used in web development?',
-      options: [
-        'PHP',
-        'Ruby',
-        'Java',
-        'HTML'
-      ],
-      answer: 'HTML',
-    },
-  ]
   
-   
-  const quizContainer = document.getElementById('quiz');
-  const resultContainer = document.getElementById('result');
-  const submitButton = document.getElementById('submit');
-  const retryButton = document.getElementById('retry');
-  const showAnswerButton = document.getElementById('showAnswers');
-  let currentQuestion = 0;
-  let score = 0;
-  let incorrectAnswers = [];
-  function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-  }
-  function displayQuestion() {
-    const questionData = quizData[currentQuestion];
-    const questionElement = document.createElement('div');
-    questionElement.className = 'question';
-    questionElement.innerHTML = questionData.question;
-    const optionsElement = document.createElement('div');
-    optionsElement.className = 'options';
-    const shuffledOptions = [...questionData.options];
-    shuffleArray(shuffledOptions);
-    for (let i = 0; i < shuffledOptions.length; i++) {
-      const option = document.createElement('label');
-      option.className = 'option';
-      const radio = document.createElement('input');
-      radio.type = 'radio';
-      radio.name = 'quiz';
-      radio.value = shuffledOptions[i];
-      const optionText = document.createTextNode(shuffledOptions[i]);
-      option.appendChild(radio);
-      option.appendChild(optionText);
-      optionsElement.appendChild(option);
-    }
-    quizContainer.innerHTML = '';
-    quizContainer.appendChild(questionElement);
-    quizContainer.appendChild(optionsElement);
-  }
-  function checkAnswer() {
-    const selectedOption = document.querySelector('input[name="quiz"]:checked');
-    if (selectedOption) {
-      const answer = selectedOption.value;
-      if (answer === quizData[currentQuestion].answer) {
-        score++;
-      } else {
-        incorrectAnswers.push({
-          question: quizData[currentQuestion].question,
-          incorrectAnswer: answer,
-          correctAnswer: quizData[currentQuestion].answer,
-        });
-      }
-      currentQuestion++;
-      selectedOption.checked = false;
-      if (currentQuestion < quizData.length) {
-        displayQuestion();
-      } else {
-        displayResult();
-      }
-    }
-  }
-  function displayResult() {
-    quizContainer.style.display = 'none';
-    submitButton.style.display = 'none';
-    retryButton.style.display = 'inline-block';
-    showAnswerButton.style.display = 'inline-block';
-    resultContainer.innerHTML = `You scored ${score} out of ${quizData.length}!`;
-  }
-  function retryQuiz() {
-    currentQuestion = 0;
-    score = 0;
-    incorrectAnswers = [];
-    quizContainer.style.display = 'block';
-    submitButton.style.display = 'inline-block';
-    retryButton.style.display = 'none';
-    showAnswerButton.style.display = 'none';
-    resultContainer.innerHTML = '';
+
+// Get the necessary DOM elements
+const quizContainer = document.getElementById('quiz');
+const resultContainer = document.getElementById('result');
+const submitButton = document.getElementById('submit');
+const retryButton = document.getElementById('retry');
+const showAnswerButton = document.getElementById('showAnswers');
+const backButton = document.getElementById('backButton')
+
+function countTotalQuestions() {
+  return window.quizData.length;
+}
+function updateQuestionCounter() {
+  const questionCounter = document.getElementById('questionCounter');
+  questionCounter.textContent = `Question ${currentQuestion + 1} of ${window.quizData.length}`;
+}
+
+// Function to display the current question
+function displayQuestion() {
+  // ...
+
+  // Update the question counter
+  updateQuestionCounter();
+}
+
+// Function to check the selected answer
+function checkAnswer() {
+  // ...
+
+  // Update the question counter
+  updateQuestionCounter();
+}
+
+
+// Function to go back to the previous question
+function goBack() {
+  if (currentQuestion > 0) {
+    currentQuestion--;
     displayQuestion();
   }
-  function showAnswer() {
-    quizContainer.style.display = 'none';
-    submitButton.style.display = 'none';
-    retryButton.style.display = 'inline-block';
-    showAnswerButton.style.display = 'none';
-    let incorrectAnswersHtml = '';
-    for (let i = 0; i < incorrectAnswers.length; i++) {
-      incorrectAnswersHtml += `
-        <p>
-          <strong>Question:</strong> ${incorrectAnswers[i].question}<br>
-          <strong>Your Answer:</strong> ${incorrectAnswers[i].incorrectAnswer}<br>
-          <strong>Correct Answer:</strong> ${incorrectAnswers[i].correctAnswer}
-        </p>
-      `;
+}
+
+
+
+let currentQuestion = 0;
+let score = 0;
+let incorrectAnswers = [];
+
+
+
+// Function to shuffle an array
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+// Function to display the current question
+function displayQuestion() {
+  const questionData = window.quizData[currentQuestion];
+  const questionElement = document.createElement('div');
+  questionElement.className = 'question';
+  questionElement.textContent = questionData.question;
+  const optionsElement = document.createElement('div');
+  optionsElement.className = 'options';
+  const shuffledOptions = [...questionData.options];
+  shuffleArray(shuffledOptions);
+  shuffledOptions.forEach(option => {
+    const optionElement = document.createElement('label');
+    optionElement.className = 'option';
+    const radio = document.createElement('input');
+    radio.type = 'radio';
+    radio.name = 'quiz';
+    radio.value = option;
+    const optionText = document.createTextNode(option);
+    optionElement.appendChild(radio);
+    optionElement.appendChild(optionText);
+    optionsElement.appendChild(optionElement);
+  });
+  quizContainer.innerHTML = '';
+  quizContainer.appendChild(questionElement);
+  quizContainer.appendChild(optionsElement);
+
+  updateQuestionCounter();
+
+
+}
+
+// Function to check the selected answer
+function checkAnswer() {
+  const selectedOption = document.querySelector('input[name="quiz"]:checked');
+  if (selectedOption) {
+    const answer = selectedOption.value;
+    if (answer === window.quizData[currentQuestion].answer) {
+      score++;
+    } else {
+      incorrectAnswers.push({
+        question: window.quizData[currentQuestion].question,
+        incorrectAnswer: answer,
+        correctAnswer: window.quizData[currentQuestion].answer,
+      });
     }
-    resultContainer.innerHTML = `
-      <p>You scored ${score} out of ${quizData.length}!</p>
-      <p>Incorrect Answers:</p>
-      ${incorrectAnswersHtml}
+    currentQuestion++;
+    selectedOption.checked = false;
+    if (currentQuestion < window.quizData.length) {
+      displayQuestion();
+    } else {
+      displayResult();
+    }
+  }
+}
+
+// Function to display the result
+function displayResult() {
+  quizContainer.style.display = 'none';
+  submitButton.style.display = 'none';
+  retryButton.style.display = 'inline-block';
+  showAnswerButton.style.display = 'inline-block';
+  resultContainer.innerHTML = `You scored ${score} out of ${window.quizData.length}!`;
+}
+
+// Function to retry the quiz
+function retryQuiz() {
+  currentQuestion = 0;
+  score = 0;
+  incorrectAnswers = [];
+  quizContainer.style.display = 'block';
+  submitButton.style.display = 'inline-block';
+  retryButton.style.display = 'none';
+  showAnswerButton.style.display = 'none';
+  resultContainer.innerHTML = '';
+  displayQuestion();
+}
+
+// Function to show the correct answers
+function showAnswer() {
+  quizContainer.style.display = 'none';
+  submitButton.style.display = 'none';
+  retryButton.style.display = 'inline-block';
+  showAnswerButton.style.display = 'none';
+  let incorrectAnswersHtml = '';
+  for (let i = 0; i < incorrectAnswers.length; i++) {
+    incorrectAnswersHtml += `
+      <p>
+        <strong>Question:</strong> ${incorrectAnswers[i].question}<br>
+        <strong>Your Answer:</strong> ${incorrectAnswers[i].incorrectAnswer}<br>
+        <strong>Correct Answer:</strong> ${incorrectAnswers[i].correctAnswer}
+      </p>
     `;
   }
-  submitButton.addEventListener('click', checkAnswer);
-  retryButton.addEventListener('click', retryQuiz);
-  showAnswerButton.addEventListener('click', showAnswer);
-  displayQuestion();
+  resultContainer.innerHTML = `
+    <p>You scored ${score} out of ${window.quizData.length}!</p>
+    <p>Incorrect Answers:</p>
+    ${incorrectAnswersHtml}
+  `;
+}
+
+// Add event listeners to the buttons
+backButton.addEventListener('click', goBack);
+submitButton.addEventListener('click', checkAnswer);
+retryButton.addEventListener('click', retryQuiz);
+showAnswerButton.addEventListener('click', showAnswer);
+
+;
+
+
+
+

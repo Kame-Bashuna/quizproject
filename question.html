@@ -9,12 +9,40 @@
 <body>
     <div class="container">
         <h1>Quiz App</h1>
+        <div class="question-counter" id="questionCounter">Question 1 of 10</div>
+        <br>
         <div id="quiz"></div>
-        <div id="result" class="result"></div>
+         <div id="result" class="result"></div>
+        <button id="backButton"   class="button">Back</button>
         <button id="submit" class="button">Submit</button>
         <button id="retry" class="button hide">Retry</button>
         <button id="showAnswers" class="button hide">Show Answer</button>
-      </div>
+    </div>
+      
     <script src="question.js"></script>
+
+    <script>
+        function myFunction(x) {
+          if (x.matches) { // If media query matches
+            document.body.style.backgroundColor = "#c2e9f8";
+          } else {
+           document.body.style.backgroundColor = "#c2e9f8";
+          }
+        }
+        
+        // Create a MediaQueryList object
+        var x = window.matchMedia("(max-width: 700px)")
+        
+        // Call listener function at run time
+        myFunction(x);
+        
+        // Attach listener function on state changes
+        x.addEventListener("change", function() {
+          myFunction(x);
+        });
+
+
+</script>
+
 </body>
 </html> 
