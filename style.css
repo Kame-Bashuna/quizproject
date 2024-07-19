@@ -4,13 +4,14 @@ body{
 
 h1{
   margin-top: 250px;
-   font-size: 80px;
-   margin-left: 150px;
+   font-size: 70px;
+   padding-left: 100px;
    
 }
 p{
-    font-size: 25px;
-    margin-left: 130px;
+    font-size: 30px;
+    padding-left: 100px;
+    width: 100%;
 
 }
 
@@ -21,7 +22,7 @@ p{
    margin-left: 0px;
    border-radius: 100px;
    font-size: 25px;
-   margin-top: 800px;
+   margin-top: 700px;
    margin-right: 100px;
    text-decoration: none;
    color: white;
